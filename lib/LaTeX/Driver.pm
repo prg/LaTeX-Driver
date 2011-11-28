@@ -59,7 +59,7 @@ our $DEBUGPREFIX;
 
 eval { require LaTeX::Driver::Paths };
 
-our @PROGRAM_NAMES = qw(latex pdflatex bibtex makeindex dvips dvipdfm ps2pdf pdf2ps);
+our @PROGRAM_NAMES = qw(latex pdflatex bibtex makeindex dvips dvipdfm ps2pdf pdf2ps xelatex);
 our %program_path;
 
 $program_path{$_} = $LaTeX::Driver::Paths::program_path{$_} || "/usr/bin/$_"
@@ -84,6 +84,7 @@ our %FORMATTERS  = (
     'pdf(dvi)' => [ 'latex', 'dvipdfm' ],
     'pdf(ps)'  => [ 'latex', 'dvips', 'ps2pdf' ],
     'ps(pdf)'  => [ 'pdflatex', 'pdf2ps' ],
+    xelatex    => [ 'xelatex', 'post_xelatex' ],
 );
 
 
@@ -443,6 +444,13 @@ sub need_to_run_latex {
     return;
 }
 
+sub run_post_xelatex {
+    my $self = shift;
+
+    copy($self->basepath .'.pdf', $self->basepath .'.'. $self->format);
+
+    return;
+}
 
 #------------------------------------------------------------------------
 # run_bibtex()

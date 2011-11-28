@@ -38,6 +38,7 @@ $program_path{dvips}     = '/usr/bin/dvips';
 $program_path{dvipdfm}   = '/usr/bin/dvipdfm';
 $program_path{pdf2ps}    = '/usr/bin/pdf2ps';
 $program_path{ps2pdf}    = '/usr/bin/pdf2ps';
+$program_path{xelatex}   = '/usr/bin/xelatex';
 
 1;
 

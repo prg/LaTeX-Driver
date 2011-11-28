@@ -47,6 +47,7 @@ our $DVIPS     = ttprompt('dvips path',     find_program($ENV{PATH}, "dvips"));
 our $DVIPDFM   = ttprompt('dvipdfm path',   find_program($ENV{PATH}, "dvipdfm"));
 our $PS2PDF    = ttprompt('ps2pdf path',    find_program($ENV{PATH}, "ps2pdf"));
 our $PDF2PS    = ttprompt('pdf2ps path',    find_program($ENV{PATH}, "pdf2ps"));
+our $XELATEX   = ttprompt('xelatex path',    find_program($ENV{PATH}, "xelatex"));
 
 if (!$LATEX and !$PDFLATEX) {
     my $continue = ttprompt('You don\'t seem to have LaTeX installed.  Continue anyway?', 'N');
@@ -61,6 +62,7 @@ fix_path_assignment(catfile('lib','LaTeX','Driver','Paths.pm'), 'dvips',     $DV
 fix_path_assignment(catfile('lib','LaTeX','Driver','Paths.pm'), 'dvipdfm',   $DVIPDFM);
 fix_path_assignment(catfile('lib','LaTeX','Driver','Paths.pm'), 'ps2pdf',    $PS2PDF);
 fix_path_assignment(catfile('lib','LaTeX','Driver','Paths.pm'), 'ps2pdf',    $PDF2PS);
+fix_path_assignment(catfile('lib','LaTeX','Driver','Paths.pm'), 'xelatex',   $XELATEX);
 
 #------------------------------------------------------------------------
 
